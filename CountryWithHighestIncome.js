@@ -1,3 +1,5 @@
+// 1. Find the country which has the highest income.
+
 import countryJSON from './countryJSON.json';
 
 function findCountryWithHighestCombinedIncome(countryJSON) {

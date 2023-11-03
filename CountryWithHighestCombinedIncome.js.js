@@ -1,8 +1,10 @@
-import country_List from './country_List.json';
+// 2. Find the country which has the combined highest income
 
-function findCountryWithHighestCombinedIncome(country_List) {
+import countryJSON from './countryJSON.json';
 
-  const countryList = [...country_List];
+function findCountryWithHighestCombinedIncome(countryJSON) {
+
+  const countryList = [...countryJSON];
   const countryIncomes = {};
   
   // Calculate the total income for each country
@@ -22,16 +24,19 @@ function findCountryWithHighestCombinedIncome(country_List) {
   let countryWithHighestIncome = null;
   let highestCombinedIncome = 0;
   
+  // iterate and find highestCombinedIncome 
   for (const country in countryIncomes) {
     if (countryIncomes[country] > highestCombinedIncome) {
       countryWithHighestIncome = country;
       highestCombinedIncome = countryIncomes[country];
     }
   }
+
   return countryWithHighestIncome;
 }
 
-console.log("The country with the highest combined income is:", findCountryWithHighestCombinedIncome(country_List));
+console.log("The country with the highest combined income is:", findCountryWithHighestCombinedIncome(countryJSON));
 
 //console.log("The combined income for this country is:", highestCombinedIncome);
 //console.log(countryIncomes);
+// console.log(countryIncomeArray);
