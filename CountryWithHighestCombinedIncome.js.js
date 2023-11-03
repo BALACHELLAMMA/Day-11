@@ -55,5 +55,5 @@ function findCountryWithHighestCombinedIncome(userDataArray) {
 console.log("The country with the highest combined income is:", findCountryWithHighestCombinedIncome(userDataArray));
 
 //4.Find the country name which has the maximum combined income for Female
-const countryListIncludeFemales = userDataArray.filter((country)=>country['gender'].toLowerCase() === 'female');
+const countryListIncludeFemales = userDataArray.filter((user)=>user['gender'].toLowerCase() === 'female');
 console.log("Find the country name which has the maximum combined income for Female is : " ,findCountryWithHighestCombinedIncome(countryListIncludeFemales));
