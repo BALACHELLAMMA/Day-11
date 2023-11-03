@@ -1,14 +1,31 @@
+import userData from './userData.json';
+
+function validateEmail(inputEmail) {
+  const validEmailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return validEmailRegex.test(inputEmail.toLowerCase());
+}
+
+const userDataArray = [...userData];
+
 // 2. Find the country which has the combined highest income
+function findCountryWithHighestCombinedIncome(userDataArray) {
 
-import countryJSON from './countryJSON.json';
+  //type and length check
+  if(!Array.isArray(userDataArray) && userDataArray.length === 0){
+    console.error("Invalid input");
+    return false;
+  }
 
-function findCountryWithHighestCombinedIncome(countryJSON) {
+  //check any invalid data in user data array
+  if(!userDataArray.every((user)=> typeof user.first_name ==='string' && user.first_name !== '' && typeof user.last_name ==='string' && user.last_name !== '' && typeof user.email === 'string' && validateEmail(user.email) && typeof user.gender === 'string'  && user.gender !== '' && typeof user.country === 'string' && user.country!=='' && typeof user.income === 'number' &&!(user.income < 0))){
+    console.error(`Invalid data in user data array`);
+    return false;
+  }
 
-  const countryList = [...countryJSON];
   const countryIncomes = {};
   
   // Calculate the total income for each country
-  countryList.forEach(record => {
+  userDataArray.forEach(record => {
     const country = record.country;
     const income = record.income;
     
@@ -35,8 +52,8 @@ function findCountryWithHighestCombinedIncome(countryJSON) {
   return countryWithHighestIncome;
 }
 
-console.log("The country with the highest combined income is:", findCountryWithHighestCombinedIncome(countryJSON));
+console.log("The country with the highest combined income is:", findCountryWithHighestCombinedIncome(userDataArray));
 
-//console.log("The combined income for this country is:", highestCombinedIncome);
-//console.log(countryIncomes);
-// console.log(countryIncomeArray);
+//4.Find the country name which has the maximum combined income for Female
+const countryListIncludeFemales = userDataArray.filter((country)=>country['gender'].toLowerCase() === 'female');
+console.log("Find the country name which has the maximum combined income for Female is : " ,findCountryWithHighestCombinedIncome(countryListIncludeFemales));
