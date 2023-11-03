@@ -15,7 +15,7 @@ function getPaginatedResult(pageNumber,pageSize){
     
     const userDataArray = [...userData];
     
-    if (!Array.isArray(userDataArray) && userData.length!==0){
+    if (!Array.isArray(userDataArray) && userData.length === 0){
         console.error("Invalid data");
         return false;
     }
