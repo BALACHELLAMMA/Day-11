@@ -10,7 +10,7 @@ function validateEmail(inputEmail) {
 
 
 
-function findCountryWithHighestCombinedIncome(userData) {
+function findCountryWithHighestIncome(userData) {
     
     const userDataArray = [...userData];
     
